@@ -1,0 +1,33 @@
+.patientDiv {
+    border-style: solid;
+    border-color: black;
+    margin: 6px;
+    justify-content: center;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+#formDiv{
+    text-align: center;
+}
+
+#allPatients{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.patientNoHeader{
+    background-color: antiquewhite;
+    padding: 0px;
+}
+
+button {
+    margin: 6px;
+}
+
+#createdBy{
+    font-size: 10px;
+}

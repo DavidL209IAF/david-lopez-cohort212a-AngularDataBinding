@@ -1,0 +1,45 @@
+
+            <!--Patient Box-->
+            <div id="allPatients">
+            <div class="patientDiv rounded" *ngFor="let patient of patientList; let i = index">
+                <h5 class="patientNoHeader">Patient No: {{ patient.patientNo }}</h5>
+                <!--Only displays if edit button is not clicked-->
+                <p *ngIf="beingEdited!==i">First Name: {{ patient.firstName }}</p>
+                <p *ngIf="beingEdited!==i">Last Name: {{ patient.lastName }}</p>
+                <p *ngIf="beingEdited!==i">Email: {{ patient.email }}</p>
+                <p *ngIf="beingEdited!==i"> Phone: {{ patient.phone }}</p>
+                <p id="createdBy" *ngIf="beingEdited!==i"> Created by: {{ patient.createdBy }}</p>
+                <button *ngIf="beingEdited!==i" class="btn btn-danger" (click)="removePatient(i)">Remove</button>
+                <button *ngIf="beingEdited!==i" class="btn btn-primary" (click)="editPatient(i)">Edit</button>
+                <!--Only displays if edit button is not clicked-->
+                <!--Only displays if edit button is clicked-->
+                <label *ngIf="beingEdited===i" for="fname1">First name:</label>
+                <input *ngIf="beingEdited===i" type="text" [(ngModel)]="firstNameEdit">
+                <label *ngIf="beingEdited===i" for="lname1">Last name:</label>
+                <input *ngIf="beingEdited===i" type="text" [(ngModel)]="lastNameEdit">
+                <label *ngIf="beingEdited===i" for="email1">Email:</label>
+                <input *ngIf="beingEdited===i" type="text" [(ngModel)]="emailEdit">
+                <label *ngIf="beingEdited===i" for="phone1">Phone Number:</label>
+                <input *ngIf="beingEdited===i" type="text" [(ngModel)]="phoneEdit">
+                <button *ngIf="beingEdited===i" class="btn btn-success" (click)="savePatient(i)">Save</button>
+                <!--Only displays if edit button is clicked-->
+            </div><br>
+        </div>
+        <!--Patient Box-->
+        
+            <hr>
+            <!--Form Div-->
+            <div id="formDiv">
+                <h5>Create Patient</h5>
+                <label for="fname">First name:</label><br>
+                <input type="text" [(ngModel)]="firstName"><br>
+                <label for="lname">Last name:</label><br>
+                <input type="text" [(ngModel)]="lastName"><br>
+                <label for="email">Email:</label><br>
+                <input type="text" [(ngModel)]="email"><br>
+                <label for="phone">Phone Number:</label><br>
+                <input type="text" [(ngModel)]="phone"><br>
+                <button class="btn btn-primary" (click)="addPatient()">Add</button><br>
+                </div>
+                <!--Form Div-->
+   

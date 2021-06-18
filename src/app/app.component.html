@@ -1,36 +1,20 @@
 <div id="mainContainer" class="container-fluid">
+
     <div id = "row" class="row">
         <div id="col"class="col-12">
-
-            <!--Patient Box-->
             <h1 id = "header">Patient List</h1>
-            <div id="allPatients">
-            <div class="patientDiv rounded" *ngFor="let users of userList; let i = index">
-                <h5 class="patientNoHeader">Patient No: {{ users.patientno }}</h5>
-                First Name: {{ users.firstname }}<br>
-                Last Name: {{ users.lastname }}<br>
-                Email: {{ users.email }}<br>
-                Phone: {{ users.phone }}<br>
-                <button class="btn btn-danger" (click)="removeUser(i)">Remove User</button>
-            </div><br>
+            
+            <!--only displays if username entered and login clicked.-->
+            <div *ngIf="!loggedIn" id="loginDiv">
+            <label for="fname">Username:</label><br>
+            <input type="text" [(ngModel)]="userName" ><br>
+            <button id="loginBtn" (click)="loginButton()" class="btn btn-primary">Login</button>
         </div>
-        <!--Patient Box-->
-        
-            <hr>
-            <!--Form Div-->
-            <div id="formDiv">
-                <h5>Create Patient</h5>
-                <label for="fname">First name:</label><br>
-                <input type="text" [(ngModel)]="firstName"><br>
-                <label for="lname">Last name:</label><br>
-                <input type="text" [(ngModel)]="lastName"><br>
-                <label for="email">Email:</label><br>
-                <input type="text" [(ngModel)]="email"><br>
-                <label for="phone">Phone Number:</label><br>
-                <input type="text" [(ngModel)]="phone"><br>
-                <button class="btn btn-primary" (click)="addUser()">Add</button><br>
-                </div>
-                <!--Form Div-->
+        <!--only displays if username entered and login clicked.-->
+
+        <p *ngIf="loggedIn"> Welcome Back {{ loggedIn }}.</p>
+
+            <app-patients [createdBy]="userName" (removePatientNotification)="alertPatientRemoved()" (addedPatientNotification)="alertPatientAdded()"></app-patients>
         </div>
     </div>
 </div>
